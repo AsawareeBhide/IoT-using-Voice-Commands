@@ -1,3 +1,4 @@
+import os
 import socket
 import sys
 from _thread import *
@@ -35,21 +36,25 @@ def threaded_client(conn):
                         print ('Red led is ON!\n')
                         GPIO.output(14,GPIO.HIGH)
                         conn.send(str.encode('RED led is ON!'))
+			os.system("espeak \"Red light is on\"")
                         
                 elif reply == 'red light off':
                         print ('Red led is OFF!\n')
                         GPIO.output(14,GPIO.LOW)
                         conn.send(str.encode('RED led is OFF!'))
+			os.system("espeak \"Red light is off\"")
                 
                 elif reply == 'Orange light on':
                         print ('Orange led is ON!\n')
                         GPIO.output(18,GPIO.HIGH)
                         conn.send(str.encode('ORANGE led is ON!'))
+			os.system("espeak \"Orange light is on\"")
 
                 elif reply == 'Orange light off':
                         print ('Orange led is OFF!\n')
                         GPIO.output(18,GPIO.LOW)
                         conn.send(str.encode('ORANGE led is OFF!'))
+			os.system("espeak \"Orange light is off\"")
 
                 #conn.sendall(str.encode(reply))
         conn.close()
