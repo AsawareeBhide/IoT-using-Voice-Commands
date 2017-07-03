@@ -24,7 +24,6 @@ public class MainActivity extends Activity {
     private TextView txtSpeechInput;
     private ImageButton btnSpeak;
     private final int REQ_CODE_SPEECH_INPUT = 100;
-    //int flag = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +34,6 @@ public class MainActivity extends Activity {
         editTextPort = (EditText) findViewById(R.id.portEditText);
         buttonConnect = (Button) findViewById(R.id.connectButton);
         buttonClear = (Button) findViewById(R.id.clearButton);
-        //Disconnect = (Button) findViewById(R.id.Disconnect);
         response = (TextView) findViewById(R.id.responseTextView);
         query = (EditText) findViewById(R.id.query);
 
@@ -53,26 +51,10 @@ public class MainActivity extends Activity {
             }
         });
 
-        /*sharedPreferences = getSharedPreferences("command", MODE_PRIVATE);
-        editor = sharedPreferences.edit();*/
-
-        /*Disconnect.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                flag = 0;
-            }
-        });*/
-
         buttonConnect.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View arg0) {
-
-                /*editor.putString("string", query.getText().toString());
-                editor.apply();
-                query.setText("");*/
-
                 Client myClient = new Client(editTextAddress.getText()
                         .toString(), Integer.parseInt(editTextPort
                         .getText().toString()), response, query.getText().toString());
