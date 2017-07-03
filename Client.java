@@ -55,16 +55,11 @@ public class Client extends AsyncTask<Void, Void, String> {
             printwriter.flush();
             printwriter.close();
 
-
-            /*DataInputStream dataInputStream = new DataInputStream(socket.getInputStream());
-
-            response = dataInputStream.readUTF();
-            dataInputStream.close();*/
             ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream(
                     1024);
             byte[] buffer = new byte[1024];
 
-            //response = "mcdonalds";
+       
             int bytesRead;
             InputStream inputStream = socket.getInputStream();
 
@@ -72,13 +67,6 @@ public class Client extends AsyncTask<Void, Void, String> {
                 byteArrayOutputStream.write(buffer, 0, bytesRead);
                 response += byteArrayOutputStream.toString("UTF-8");
             }
-
-            /*answer = response;
-            publishProgress(answer);
-            Intent i = new Intent(Client.class, voice.class);
-            i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(i);*/
-
         }
         catch (UnknownHostException e) {
             // TODO Auto-generated catch block
@@ -90,42 +78,13 @@ public class Client extends AsyncTask<Void, Void, String> {
             e.printStackTrace();
             response = "IOException: " + e.toString();
         }
-
-        /*finally {
-            if (socket != null) {
-                try {
-                    socket.close();
-                }
-                catch (IOException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
-            }
-        }*/
-
         return response;
     }
-
-    /*protected void publishProgress(String answer) {
-        textResponse.setText(answer);
-        //setProgressPercent();
-    }*/
 
     @Override
     protected void onPostExecute(String result) {
         textResponse.setText(response);
-        //textResponse.setText(answer);
         super.onPostExecute(result);
     }
-
-
-    /*@Override
-    protected void onPostExecute(String result) {
-        textResponse.setText(response);
-        Intent i = new Intent(Client.this.getActivity(), voice.class);
-        i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(i);
-        super.onPostExecute(result);
-    }*/
 
 }
